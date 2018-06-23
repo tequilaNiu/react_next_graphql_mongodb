@@ -1,7 +1,8 @@
+// import axios from 'axios'
+import { withRouter } from 'next/router'
 import Layout from '../components/MyLayout.js'
-import axios from 'axios';
 
-export default class Post extends React.Component {
+class Post extends React.Component {
   static async getInitialProps({query}) {
     // const data = res.data
     // const res = await axios('http://localhost:3000/getUser');
@@ -42,9 +43,11 @@ export default class Post extends React.Component {
   }
 
   render() {
+    const { router } = this.props;
+
     return (
       <Layout>
-        <h1>{this.props.url.query.id}</h1>
+        <h1>{router.query.id}</h1>
         <p>This is the blog post content.</p>
         <p>计数器： {this.props.index}</p>
         <button onClick={this.myClick}>点我</button>{this.state.userName}
@@ -52,3 +55,5 @@ export default class Post extends React.Component {
     )
   }
 }
+
+export default withRouter(Post)

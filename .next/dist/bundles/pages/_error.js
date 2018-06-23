@@ -72,17 +72,17 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "/Users/admaster/Workspace/next-demo/node_modules/_next@6.0.3@next/dist/pages/_error.js":
+/***/ "/Users/mac/Workspace/react_next_graphql_mongodb/node_modules/_next@6.0.3@next/dist/pages/_error.js":
 /***/ (function(module, exports) {
 
-module.exports = require("/Users/admaster/Workspace/next-demo/node_modules/_next@6.0.3@next/dist/pages/_error.js");
+module.exports = require("/Users/mac/Workspace/react_next_graphql_mongodb/node_modules/_next@6.0.3@next/dist/pages/_error.js");
 
 /***/ }),
 
 /***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("/Users/admaster/Workspace/next-demo/node_modules/_next@6.0.3@next/dist/pages/_error.js");
+module.exports = __webpack_require__("/Users/mac/Workspace/react_next_graphql_mongodb/node_modules/_next@6.0.3@next/dist/pages/_error.js");
 
 
 /***/ })
