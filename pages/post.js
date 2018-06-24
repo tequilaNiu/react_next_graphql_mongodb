@@ -25,16 +25,16 @@ class Post extends React.Component {
   myClick = () => {
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
-    xhr.open("POST", "/api/getUser");
+    xhr.open("POST", "/graphql");
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader("Accept", "application/json");
     xhr.onload = () => {
       console.log('data returned:', xhr.response);
       this.setState({
-        userName: xhr.response.data.name
+        userName: xhr.response.data.user.name
       })
     }
-    xhr.send(JSON.stringify({query: "{ name }"}));
+    xhr.send(JSON.stringify({query: "{ user { name } }"}));
     // axios.post(`/api/getUser`, {
     //   query: JSON.stringify({name})
     // }).then(function(res) {

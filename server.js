@@ -1,39 +1,63 @@
 const next = require('next')
 const routes = require('./routes')
 const express = require('express')
-var graphqlHTTP = require('express-graphql');
-var { buildSchema } = require('graphql');
+const bodyParser = require('body-parser');
+const { graphqlExpress } = require('apollo-server-express');
+const { makeExecutableSchema } = require('graphql-tools');
+// var graphqlHTTP = require('express-graphql');
+// var { buildSchema } = require('graphql');
 
 const app = next({dev: process.env.NODE_ENV !== 'production'})
-const appp = express();
 const handler = routes.getRequestHandler(app, ({req, res, route, query}) => {
   // 可以做点自己想做的事情
   app.render(req, res, route.page, query)
 })
 
-var schema = buildSchema(`
-  type Query {
-    name: String,
-    age: String,
-  }
-`);
+// var schema = buildSchema(`
+//   type Query {
+//     name: String,
+//     age: String,
+//   }
+// `);
 
-var root = {
-  name: () => {
-    return 'Nolan';
-  },
-  age: () => {
-    return '29';
-  }
+// var root = {
+//   name: () => {
+//     return 'Nolan';
+//   },
+//   age: () => {
+//     return '29';
+//   }
+// }
+
+const user = {
+  name: 'Nolan',
+  age: '28'
 }
 
-app.prepare().then(() => {
-  appp.post('/api/getUser', graphqlHTTP({
-    schema: schema,
-    rootValue: root,
-    graphiql: false,
-  }))
+const typeDefs = `
+  type Query { user: User }
+  type User { name: String, age: String }
+`;
 
+const resolvers = {
+  Query: { user: () => user }
+}
+
+const schema = makeExecutableSchema({
+  typeDefs,
+  resolvers,
+});
+
+const appp = express();
+
+app.prepare().then(() => {
+  // appp.post('/api/getUser', graphqlHTTP({
+  //   schema: schema,
+  //   rootValue: root,
+  //   graphiql: false,
+  // }))
+
+  appp.use('/graphql', bodyParser.json(), graphqlExpress({ schema }))
   appp.use(handler).listen(3000)
 })
 
