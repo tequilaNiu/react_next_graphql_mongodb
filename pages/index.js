@@ -1,5 +1,3 @@
-import Head from 'next/head'
-import '../asserts/styles.less'
 import Layout from '../components/MyLayout.js'
 import { Link } from '../routes'
 import { Input, Tag } from 'antd';
@@ -15,12 +13,6 @@ const PostLink = (props) => (
 
 export default () => (
   <Layout>
-    <Head>
-      <meta name='viewport' content='width=device-width, initial-scale=1' />
-      <meta charSet='utf-8' />
-      <link rel='stylesheet' href='/_next/static/style.css' />
-    </Head>
-
     <h1>My Blog</h1>
     <ul>
       <PostLink id="1"

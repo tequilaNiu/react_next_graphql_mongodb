@@ -1,9 +1,8 @@
 // import axios from 'axios'
 import { withRouter } from 'next/router'
 import Layout from '../components/MyLayout.js'
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
-import { Spin, message, Tag } from 'antd';
+import SqlTag from '../components/SqlTag.js'
+import MongoTag from '../components/MongoTag.js'
 
 class Post extends React.Component {
   static async getInitialProps({query}) {
@@ -54,38 +53,8 @@ class Post extends React.Component {
         <p>This is the blog post content.</p>
         <p>计数器： {this.props.index}</p>
         {/*<button onClick={this.myClick}>点我</button>{this.state.userName}*/}
-        <Query
-          query={gql`
-            {
-              user { name, age }
-            }
-          `}
-        >
-          {
-            ({ loading, error, data }) => {
-              if (loading) return <Spin />;
-              if (error) return message.error(error);
-
-              return <Tag>{data.user.name}, {data.user.age}</Tag>
-            }
-          }
-        </Query>
-        <Query
-          query={gql`
-            {
-              account { email, password }
-            }
-          `}
-        >
-          {
-            ({ loading, error, data }) => {
-              if (loading) return <Spin />;
-              if (error) return message.error(error);
-
-              return <Tag>{data.account.email}, {data.account.password}</Tag>
-            }
-          }
-        </Query>
+        <SqlTag />
+        <MongoTag />
       </Layout>
     )
   }
