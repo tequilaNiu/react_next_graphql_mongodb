@@ -1,10 +1,17 @@
-const next = require('next')
-const routes = require('./routes')
-const express = require('express')
-const bodyParser = require('body-parser');
-const { graphqlExpress } = require('apollo-server-express');
-const { makeExecutableSchema } = require('graphql-tools');
-const { User } = require('./connectors');
+// const next = require('next')
+// const routes = require('./routes')
+// const express = require('express')
+// const bodyParser = require('body-parser');
+// const { graphqlExpress } = require('apollo-server-express');
+// const { makeExecutableSchema } = require('graphql-tools');
+// const { User } = require('./connectors');
+import next from 'next';
+import routes from './routes';
+import express from 'express';
+import bodyParser from 'body-parser';
+import apollo from 'apollo-server-express';
+import graphql from 'graphql-tools';
+import { User } from './connectors.mjs';
 // var graphqlHTTP = require('express-graphql');
 // var { buildSchema } = require('graphql');
 
@@ -39,7 +46,7 @@ const resolvers = {
   Query: { user: () => User.findOne() }
 }
 
-const schema = makeExecutableSchema({
+const schema = graphql.makeExecutableSchema({
   typeDefs,
   resolvers,
 });
@@ -53,7 +60,7 @@ app.prepare().then(() => {
   //   graphiql: false,
   // }))
 
-  appp.use('/graphql', bodyParser.json(), graphqlExpress({ schema }))
+  appp.use('/graphql', bodyParser.json(), apollo.graphqlExpress({ schema }))
   appp.use(handler).listen(3000)
 })
 

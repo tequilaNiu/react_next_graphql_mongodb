@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node server.js"
+    "dev": "node --experimental-modules server.mjs"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +30,7 @@
     "graphql-tools": "^3.0.2",
     "less": "^3.0.4",
     "lodash": "^4.17.10",
+    "mongoose": "^5.1.6",
     "next": "^6.0.3",
     "next-routes": "^1.4.2",
     "node-fetch": "^2.1.2",

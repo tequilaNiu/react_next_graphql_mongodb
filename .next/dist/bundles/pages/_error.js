@@ -72,18 +72,26 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "/Users/mac/Workspace/react_next_graphql_mongodb/node_modules/_next@6.0.3@next/dist/pages/_error.js":
-/***/ (function(module, exports) {
+/***/ "./node_modules/next/dist/pages/_error.js":
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = require("/Users/mac/Workspace/react_next_graphql_mongodb/node_modules/_next@6.0.3@next/dist/pages/_error.js");
+module.exports = __webpack_require__("next/error")
+
 
 /***/ }),
 
 /***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("/Users/mac/Workspace/react_next_graphql_mongodb/node_modules/_next@6.0.3@next/dist/pages/_error.js");
+module.exports = __webpack_require__("./node_modules/next/dist/pages/_error.js");
 
+
+/***/ }),
+
+/***/ "next/error":
+/***/ (function(module, exports) {
+
+module.exports = require("next/error");
 
 /***/ })
 

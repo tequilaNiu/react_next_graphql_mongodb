@@ -72,18 +72,26 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "/Users/mac/Workspace/react_next_graphql_mongodb/node_modules/_next@6.0.3@next/dist/pages/_app.js":
-/***/ (function(module, exports) {
+/***/ "./node_modules/next/dist/pages/_app.js":
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = require("/Users/mac/Workspace/react_next_graphql_mongodb/node_modules/_next@6.0.3@next/dist/pages/_app.js");
+module.exports = __webpack_require__("next/app")
+
 
 /***/ }),
 
 /***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("/Users/mac/Workspace/react_next_graphql_mongodb/node_modules/_next@6.0.3@next/dist/pages/_app.js");
+module.exports = __webpack_require__("./node_modules/next/dist/pages/_app.js");
 
+
+/***/ }),
+
+/***/ "next/app":
+/***/ (function(module, exports) {
+
+module.exports = require("next/app");
 
 /***/ })
 

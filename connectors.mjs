@@ -1,6 +1,9 @@
-const casual = require('casual');
-const _ = require('lodash');
-const Sequelize = require('sequelize');
+// const casual = require('casual');
+// const _ = require('lodash');
+// const Sequelize = require('sequelize');
+import casual from 'casual';
+import _ from 'lodash';
+import Sequelize from 'sequelize';
 
 const db = new Sequelize('blog', null, null, {
   dialect: 'sqlite',
@@ -25,4 +28,5 @@ db.sync({ force: true }).then(() => {
 
 const User = db.models.usr;
 
-module.exports = { User: User };
+// module.exports = { User: User };
+export { User }
