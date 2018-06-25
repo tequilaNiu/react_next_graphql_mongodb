@@ -3,6 +3,7 @@ import { withRouter } from 'next/router'
 import Layout from '../components/MyLayout.js'
 import SqlTag from '../components/SqlTag.js'
 import MongoTag from '../components/MongoTag.js'
+import { Button } from 'antd';
 
 class Post extends React.Component {
   static async getInitialProps({query}) {
@@ -11,16 +12,14 @@ class Post extends React.Component {
 
     console.log('Show data fetched. Count: 1')
 
-    return {
-      index: 1,
-    }
+    return {}
   }
 
   constructor(props) {
     super(props);
 
     this.state = {
-      userName: ''
+      index: 1
     }
   }
 
@@ -51,9 +50,10 @@ class Post extends React.Component {
       <Layout>
         <h1>{router.query.id}</h1>
         <p>This is the blog post content.</p>
-        <p>计数器： {this.props.index}</p>
+        <p>计数器： {this.state.index} &nbsp; <Button onClick={() => {this.setState({ index: this.state.index + 1 })}} >戳我</Button></p>
         {/*<button onClick={this.myClick}>点我</button>{this.state.userName}*/}
         <SqlTag />
+        <br />
         <MongoTag />
       </Layout>
     )
