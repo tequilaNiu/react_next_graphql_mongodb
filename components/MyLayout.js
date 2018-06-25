@@ -1,6 +1,7 @@
 import Header from './Header'
 import ApolloClient from 'apollo-client';
-import { ApolloProvider } from "react-apollo";
+// import ApolloClient from 'apollo-boost';  // 这个一直报错，用apollo-client做替代
+import { ApolloProvider } from 'react-apollo';
 import fetch from 'node-fetch';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
@@ -16,6 +17,9 @@ const client = new ApolloClient({
   }),
   cache: new InMemoryCache(),
 });
+// const client = new ApolloClient({
+//   uri: '/graphql'
+// })
 
 const layoutStyle = {
   margin: 20,

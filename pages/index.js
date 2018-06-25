@@ -2,7 +2,7 @@ import Head from 'next/head'
 import '../asserts/styles.less'
 import Layout from '../components/MyLayout.js'
 import { Link } from '../routes'
-import { Input } from 'antd';
+import { Input, Tag } from 'antd';
 const Search = Input.Search;
 
 const PostLink = (props) => (
@@ -35,5 +35,6 @@ export default () => (
       onSearch={value => console.log(value)}
       style={{ width: 200 }}
     />
+    <Tag>Tag 1</Tag>
   </Layout>
 )

@@ -70,6 +70,22 @@ class Post extends React.Component {
             }
           }
         </Query>
+        <Query
+          query={gql`
+            {
+              account { email, password }
+            }
+          `}
+        >
+          {
+            ({ loading, error, data }) => {
+              if (loading) return <Spin />;
+              if (error) return message.error(error);
+
+              return <Tag>{data.account.email}, {data.account.password}</Tag>
+            }
+          }
+        </Query>
       </Layout>
     )
   }

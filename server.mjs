@@ -11,7 +11,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import apollo from 'apollo-server-express';
 import graphql from 'graphql-tools';
-import { User } from './connectors.mjs';
+import { SqlUser, MongoAccount } from './connectors.mjs';
 // var graphqlHTTP = require('express-graphql');
 // var { buildSchema } = require('graphql');
 
@@ -38,12 +38,16 @@ const handler = routes.getRequestHandler(app, ({req, res, route, query}) => {
 // }
 
 const typeDefs = `
-  type Query { user: User }
+  type Query { user: User, account: Account }
   type User { name: String, age: String }
+  type Account { email: String, password: String }
 `;
 
 const resolvers = {
-  Query: { user: () => User.findOne() }
+  Query: { 
+    user: () => SqlUser.findOne(),
+    account: () => MongoAccount.findOne(),
+  }
 }
 
 const schema = graphql.makeExecutableSchema({
