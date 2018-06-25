@@ -4,6 +4,7 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const { graphqlExpress } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
+const { User } = require('./connectors');
 // var graphqlHTTP = require('express-graphql');
 // var { buildSchema } = require('graphql');
 
@@ -29,18 +30,13 @@ const handler = routes.getRequestHandler(app, ({req, res, route, query}) => {
 //   }
 // }
 
-const user = {
-  name: 'Nolan',
-  age: '28'
-}
-
 const typeDefs = `
   type Query { user: User }
   type User { name: String, age: String }
 `;
 
 const resolvers = {
-  Query: { user: () => user }
+  Query: { user: () => User.findOne() }
 }
 
 const schema = makeExecutableSchema({
