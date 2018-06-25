@@ -2,11 +2,11 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import { Spin, Tag } from 'antd';
 
-const MongoTag = () => (
+const MongoTag = (props) => (
   <Query
     query={gql`
       {
-        account { email, password }
+        account(id: ${props.pageId}) { email, password, id }
       }
     `}
   >
@@ -15,7 +15,8 @@ const MongoTag = () => (
         if (loading) return <Spin />;
         if (error) return <Tag color="#f50">{error.message}</Tag>;
 
-        return <Tag>{data.account.email}, {data.account.password}</Tag>
+        const { id, email, password } = data.account;
+        return <Tag>{id}, {email}, {password}</Tag>
       }
     }
   </Query>

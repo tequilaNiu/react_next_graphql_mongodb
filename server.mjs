@@ -38,15 +38,15 @@ const handler = routes.getRequestHandler(app, ({req, res, route, query}) => {
 // }
 
 const typeDefs = `
-  type Query { user: User, account: Account }
-  type User { name: String, age: String }
-  type Account { email: String, password: String }
+  type Query { user(id: Int): User, account(id: Int): Account }
+  type User { name: String, age: String, id: Int }
+  type Account { email: String, password: String, id: Int }
 `;
 
 const resolvers = {
   Query: { 
-    user: () => SqlUser.findOne(),
-    account: () => MongoAccount.findOne(),
+    user: (_, args) => SqlUser.findOne({where: args}),
+    account: (_, args) => MongoAccount.findOne(args),
   }
 }
 

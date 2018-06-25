@@ -52,9 +52,9 @@ class Post extends React.Component {
         <p>This is the blog post content.</p>
         <p>计数器： {this.state.index} &nbsp; <Button onClick={() => {this.setState({ index: this.state.index + 1 })}} >戳我</Button></p>
         {/*<button onClick={this.myClick}>点我</button>{this.state.userName}*/}
-        <SqlTag />
+        <SqlTag pageId={router.query.id}/>
         <br />
-        <MongoTag />
+        <MongoTag pageId={router.query.id} />
       </Layout>
     )
   }

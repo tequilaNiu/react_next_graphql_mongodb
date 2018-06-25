@@ -13,6 +13,7 @@ const mongo = Mongoose.connect('mongodb://localhost/account', {
 })
 
 const AccountSchema = Mongoose.Schema({
+  id: Number,
   email: String,
   password: String,
 })
@@ -25,6 +26,7 @@ const db = new Sequelize('blog', null, null, {
 })
 
 const UserModel = db.define('usr', {
+  id: { type: Sequelize.INTEGER, primaryKey: true },
   name: { type: Sequelize.STRING },
   age: { type: Sequelize.STRING }
 })
@@ -32,14 +34,18 @@ const UserModel = db.define('usr', {
 casual.seed(123);
 
 db.sync({ force: true }).then(() => {
+  let i = 0;
+  let j = 0;
   _.times(10, () => {
     // sql insert
     return UserModel.create({
+      id: i++,
       name: casual.name,
       age: casual.building_number,
     }).then(() => {
       // mongo insert
       return MongoAccount.create({
+        id: j++,
         email: casual.email,
         password: casual.password,
       })
