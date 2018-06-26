@@ -1,9 +1,15 @@
 // import axios from 'axios'
 import { withRouter } from 'next/router'
 import Layout from '../components/MyLayout.js'
-import SqlTag from '../components/SqlTag.js'
-import MongoTag from '../components/MongoTag.js'
-import { Button } from 'antd';
+// import SqlTag from '../components/SqlTag.js'
+// import MongoTag from '../components/MongoTag.js'
+// import Breadcrumb from '../components/Breadcrumb.js'
+import { Button } from 'antd'
+import dynamic from 'next/dynamic'
+
+const SqlTag = dynamic(import('../components/SqlTag'))
+const MongoTag = dynamic(import('../components/MongoTag'))
+const Breadcrumb = dynamic(import('../components/Breadcrumb'))
 
 class Post extends React.Component {
   static async getInitialProps({query}) {
@@ -48,11 +54,12 @@ class Post extends React.Component {
 
     return (
       <Layout>
+        <Breadcrumb />
         <h1>{router.query.id}</h1>
         <p>This is the blog post content.</p>
         <p>计数器： {this.state.index} &nbsp; <Button onClick={() => {this.setState({ index: this.state.index + 1 })}} >戳我</Button></p>
-        {/*<button onClick={this.myClick}>点我</button>{this.state.userName}*/}
-        <SqlTag pageId={router.query.id}/>
+        <br />
+        <SqlTag pageId={router.query.id} />
         <br />
         <MongoTag pageId={router.query.id} />
       </Layout>
