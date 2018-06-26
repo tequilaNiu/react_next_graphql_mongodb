@@ -3,3 +3,4 @@
 /.next
 .vscode
 .DS_Store
+.blog.sqlite
