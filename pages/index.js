@@ -5,7 +5,7 @@ const Search = Input.Search;
 
 const PostLink = (props) => (
   <li>
-    <Link route={`/p/${props.id}`}>
+    <Link prefetch route={`/p/${props.id}`}>
       <a>{props.title}</a>
     </Link>
   </li>
