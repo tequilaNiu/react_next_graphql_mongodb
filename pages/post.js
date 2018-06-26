@@ -1,15 +1,17 @@
 // import axios from 'axios'
+import dynamic from 'next/dynamic'
 import { withRouter } from 'next/router'
 import Layout from '../components/MyLayout.js'
 // import SqlTag from '../components/SqlTag.js'
 // import MongoTag from '../components/MongoTag.js'
 // import Breadcrumb from '../components/Breadcrumb.js'
-import { Button } from 'antd'
-import dynamic from 'next/dynamic'
+import { Button, Spin } from 'antd'
 
 const SqlTag = dynamic(import('../components/SqlTag'))
 const MongoTag = dynamic(import('../components/MongoTag'))
-const Breadcrumb = dynamic(import('../components/Breadcrumb'))
+const Breadcrumb = dynamic(import('../components/Breadcrumb'), {
+  loading: () => <Spin />,
+})
 
 class Post extends React.Component {
   static async getInitialProps({query}) {
