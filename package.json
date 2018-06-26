@@ -7,6 +7,7 @@
     "dev": "node --experimental-modules server.mjs",
     "build": "next build",
     "start": "NODE_ENV=production node --experimental-modules server.mjs",
+    "static": "next build && next export",
     "analyze": "cross-env ANALYZE=1 next build"
   },
   "keywords": [],
