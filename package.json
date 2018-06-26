@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node --experimental-modules server.mjs"
+    "dev": "node --experimental-modules server.mjs",
+    "build": "next build",
+    "start": "NODE_ENV=production node --experimental-modules server.js"
   },
   "keywords": [],
   "author": "",

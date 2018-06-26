@@ -1,8 +1,12 @@
 /* eslint-disable */
 const withLess = require('@zeit/next-less')
 
-module.exports = withLess({
-  lessLoaderOptions: {
-    javascriptEnabled: true,
-  },
-})
+module.exports = {
+  distDir: 'build',
+  useFileSystemPublicRoutes: false,
+  ...withLess({
+    lessLoaderOptions: {
+      javascriptEnabled: true,
+    },
+  })
+}

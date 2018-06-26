@@ -1,4 +1,5 @@
 /node_modules
+/build
 /.next
 .vscode
 .DS_Store
