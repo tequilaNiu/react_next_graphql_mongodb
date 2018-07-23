@@ -1,0 +1,13 @@
+version: "3"
+services:
+  web:
+    image: dicknhl90/react_next_graphql_mongodb_web
+    links:
+      - mongo:mongodb
+    ports:
+      - "3000:3000"
+    deploy:
+      replicas: 3
+  mongo:
+    image: "mongo"
+  

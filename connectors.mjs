@@ -1,6 +1,3 @@
-// const casual = require('casual');
-// const _ = require('lodash');
-// const Sequelize = require('sequelize');
 import casual from 'casual';
 import _ from 'lodash';
 import Sequelize from 'sequelize';
@@ -8,7 +5,7 @@ import Mongoose from 'mongoose';
 
 Mongoose.Promise = global.Promise;
 
-const mongo = Mongoose.connect('mongodb://localhost/account', {
+const mongo = Mongoose.connect('mongodb://mongodb/account', {
   // useMongoClient: true
 })
 

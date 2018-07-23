@@ -14,7 +14,6 @@ import graphql from 'graphql-tools';
 import { SqlUser, MongoAccount } from './connectors.mjs';
 // var graphqlHTTP = require('express-graphql');
 // var { buildSchema } = require('graphql');
-
 const app = next({dev: process.env.NODE_ENV !== 'production'})
 const handler = routes.getRequestHandler(app, ({req, res, route, query}) => {
   // 可以做点自己想做的事情
